@@ -73,15 +73,32 @@ namespace hetedikke
         private void button1_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
+
             sfd.InitialDirectory = Application.StartupPath;
-            sfd.Filter = "Comma Seperated Values (*.csv)|*.csv"; 
+            sfd.Filter = "Comma Seperated Values (*.csv)|*.csv";
             sfd.DefaultExt = "csv";
             sfd.AddExtension = true;
 
-            using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
-            {
+            if (sfd.ShowDialog() != DialogResult.OK) return;
 
+
+
+            StreamWriter sw = new StreamWriter(sfd.FileName);
+            sw.WriteLine("Időszak;Nyereség");
+            List<decimal> Nyereségek = new List<decimal>();
+            int intervalum = 30;
+            DateTime kezdőDátum = (from x in Ticks select x.TradingDay).Min();
+            DateTime záróDátum = new DateTime(2016, 12, 30);
+            TimeSpan z = záróDátum - kezdőDátum;
+            for (int i = 0; i < z.Days - intervalum; i++)
+            {
+                decimal ny = GetPortfolioValue(kezdőDátum.AddDays(i + intervalum))
+                           - GetPortfolioValue(kezdőDátum.AddDays(i));
+                Nyereségek.Add(ny);
+                sw.WriteLine(i + ";" + ny);
             }
+
+            sw.Close();
 
         }
     }

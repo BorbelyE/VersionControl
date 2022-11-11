@@ -13,7 +13,7 @@ namespace hetedikke
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        f{
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

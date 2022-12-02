@@ -150,7 +150,7 @@ namespace kilences
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             NumberOfMan.Clear();
             NumberOfWoman.Clear();
@@ -169,7 +169,7 @@ namespace kilences
             Simulation(int.Parse(numericUpDown1.Value.ToString()));
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.InitialDirectory = @"C:\Temp";

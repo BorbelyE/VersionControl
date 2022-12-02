@@ -150,6 +150,8 @@ namespace kilences
             }
         }
 
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             NumberOfMan.Clear();

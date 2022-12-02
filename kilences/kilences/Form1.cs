@@ -28,9 +28,7 @@ namespace kilences
             Population = GetPopulation(@"C:\Temp\nép.csv");
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
-
         }
-
 
         private void Simulation(int maxYear)
         {
@@ -59,7 +57,7 @@ namespace kilences
         {
             for (int year = 2005; year <= maxYear; year++)
             {
-                richTextBox1.Text += "Szimulációs év: " + year + "\n\t Fiúk: " + NumberOfMan[year - 2005] + "\n\t Lányok: " + NumberOfWoman[year - 2005] + "\n";
+                TextBox1.Text += "Szimulációs év: " + year + "\n\t Fiúk: " + NumberOfMan[year - 2005] + "\n\t Lányok: " + NumberOfWoman[year - 2005] + "\n";
             }
         }
 
@@ -159,13 +157,13 @@ namespace kilences
             Population.Clear();
             BirthProbabilities.Clear();
             DeathProbabilities.Clear();
-            richTextBox1.Text = "";
-            if (!File.Exists(richTextBox1.Text))
+            TextBox1.Text = "";
+            if (!File.Exists(TextBox1.Text))
             {
                 MessageBox.Show("Nem talalhato a file.");
                 return;
             }
-            Population = GetPopulation(richTextBox1.Text);
+            Population = GetPopulation(TextBox1.Text);
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
             Simulation(int.Parse(numericUpDown1.Value.ToString()));
@@ -176,7 +174,7 @@ namespace kilences
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.InitialDirectory = @"C:\Temp";
             if (ofd.ShowDialog() != DialogResult.OK) return;
-            richTextBox1.Text = ofd.FileName;
+            TextBox1.Text = ofd.FileName;
         }
     }
 }

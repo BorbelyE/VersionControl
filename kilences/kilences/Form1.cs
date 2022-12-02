@@ -31,13 +31,6 @@ namespace kilences
 
         }
 
-        void DisplayResults(int maxYear)
-        {
-            for (int year = 2005; year <= maxYear; year++)
-            {
-                richTextBox1.Text += "Szimulációs év: " + year + "\n\t Fiúk: " + NumberOfMan[year - 2005] + "\n\t Lányok: " + NumberOfWoman[year - 2005] + "\n";
-            }
-        }
 
         private void Simulation(int maxYear)
         {
@@ -60,6 +53,14 @@ namespace kilences
 
             }
             DisplayResults(maxYear);
+        }
+
+        void DisplayResults(int maxYear)
+        {
+            for (int year = 2005; year <= maxYear; year++)
+            {
+                richTextBox1.Text += "Szimulációs év: " + year + "\n\t Fiúk: " + NumberOfMan[year - 2005] + "\n\t Lányok: " + NumberOfWoman[year - 2005] + "\n";
+            }
         }
 
         public List<Person> GetPopulation(string csvpath)
